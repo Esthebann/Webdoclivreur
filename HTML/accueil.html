@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - La maison des livreurs</title>
+    <link rel="stylesheet" href="../CSS/accueil.css">
+
+
+</head>
+<body>
+
+    <div class="intro">
+        <!-- En-tête superposé -->
+        <div class="intro-header">
+            <div class="intro-title">
+                <h1>La Maison des Livreurs</h1>
+            </div>
+            <div class="intro-byline">
+                <p>Réalisé par MMI Bordeaux</p>
+            </div>
+        </div>
+
+        <!-- Bouton "Commencer" -->
+        <button class="intro-begin">Commencer</button>
+    </div>
+
+    <!-- Overlay pour transition -->
+    <div class="transition-overlay"></div>
+
+    <script>
+        document.querySelector(".intro-begin").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Déclenche l'animation
+            document.querySelector(".transition-overlay").style.left = "0";
+
+            // Redirige après l'animation
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 800);
+        });
+    </script>
+
+</body>
+</html>
