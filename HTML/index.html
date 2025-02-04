@@ -7,187 +7,194 @@
   <style>
     /* Barre de navigation */
     nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 9999;
     }
     nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 16px;
-        padding: 10px 20px;
-        transition: 0.3s;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 20px;
+      transition: 0.3s;
     }
     nav a:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 5px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 5px;
     }
-
+    
     /* Styles généraux */
     body {
-        margin: 0;
-        padding: 0;
-        background-color: #525050;
-        font-family: sans-serif;
-        overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background-color: #525050;
+      font-family: sans-serif;
+      overflow: hidden;
     }
     .background-image {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('background.jpg') no-repeat center center;
-        background-size: cover;
-        z-index: 1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('background.jpg') no-repeat center center;
+      background-size: cover;
+      z-index: 1;
     }
     .background-image::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-        z-index: 2;
+      content:"";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: 2;
     }
+    
     /* Contenu principal */
     .main-content {
-        margin-top: 50px;
-        margin-bottom: 72.88px;
-        height: calc(100vh - 50px - 72.88px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 2;
+      margin-top: 50px;
+      margin-bottom: 72.88px;
+      height: calc(100vh - 50px - 72.88px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
     }
-    /* Container de l'image (remplaçant la vidéo) */
+    /* Container de l'image et des zones cliquables (point courant) */
     .image-container {
-        position: relative;
-        width: 80%;
-        max-width: 700px;
+      position: relative;
+      width: 80%;
+      max-width: 700px;
+      height: 500px;
+      border: 2px solid transparent;
     }
-    .image-container img {
-        width: 100%;
-        display: block;
+    .image-container .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 0;
     }
-    /* Zones cliquables sur l'image */
     .clickable-zone {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        border: 2px solid;
-        cursor: pointer;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 1;
     }
     .clickable-zone:hover {
-        transform: scale(1.1);
-        opacity: 0.9;
+      transform: scale(1.1);
+      opacity: 0.9;
     }
-    /* Positionnement et couleurs des zones */
+    /* Exemple de positions pour le premier point (4 zones) */
     #clickable-zone1 { background-color: rgba(0, 0, 255, 0.7); border-color: blue; top: 20%; left: 10%; }
     #clickable-zone2 { background-color: rgba(255, 0, 0, 0.7); border-color: red; top: 20%; right: 10%; }
     #clickable-zone3 { background-color: rgba(0, 255, 0, 0.7); border-color: green; bottom: 20%; left: 10%; }
     #clickable-zone4 { background-color: rgba(255, 255, 0, 0.7); border-color: yellow; bottom: 20%; right: 10%; }
-
+    
     /* Vidéos secondaires (pop-up) */
     .video-card {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) translateY(20px);
-        width: 60%;
-        max-width: 600px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
-        opacity: 0;
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        z-index: 10;
-        display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(20px);
+      width: 60%;
+      max-width: 600px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 10;
+      display: none;
     }
     .video-card.show {
-        display: block;
-        opacity: 1;
-        transform: translate(-50%, -50%) translateY(0);
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
     }
     .video-card video {
-        width: 100%;
-        display: block;
+      width: 100%;
+      display: block;
     }
     
-    /* Nouveau Chemin de progression */
+    /* Barre de progression */
     .chemin-progression {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 1280px;
-        background: #444;
-        padding: 10px 10px 10px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 50;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #444;
+      padding: 10px 0;
+      z-index: 50;
     }
-    .points {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1136px;
-        margin-bottom: 10px;
+    .progress-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
-    .points button {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #ff6347;
-        border: 4px solid #fff;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    .points-container {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
     }
-    .points button:hover {
-        background-color: #e5533d;
-        transform: scale(1.1);
+    .points-container button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ff6347;
+      border: 4px solid #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .points .point-actif {
-        background-color: #333;
-        border-color: #ff6347;
+    .points-container button:hover {
+      background-color: #e5533d;
+      transform: scale(1.1);
     }
-    .titres {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1136px;
-        font-size: 16px;
-        color: #fff;
+    .points-container button.point-actif {
+      background-color: #333;
+      border-color: #ff6347;
     }
-    .titres span {
-        flex: 1;
-        text-align: center;
+    .labels-container {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 5px auto 0;
+      font-size: 16px;
+      color: #fff;
+      text-align: center;
     }
-    
-    /* Élément mobile (Character) qui se déplace sur le chemin */
+    .labels-container span {
+      width: 40px; /* Même largeur que le bouton */
+    }
+    /* Cycliste (character) */
     .character {
-        position: absolute;
-        top: -50px; /* Ajustez la position verticale au besoin */
-        width: 40px;
-        height: 40px;
-        background: url('../PICTURE/cycliste.png') no-repeat center;
-        background-size: contain;
-        transition: left 0.3s ease;
-        z-index: 80;
+      position: absolute;
+      top: -20px;
+      width: 40px;
+      height: 40px;
+      background: url('../PICTURE/cycliste.png') no-repeat center;
+      background-size: contain;
+      transform: translateX(-50%);
+      transition: left 1s ease;
+      z-index: 80;
     }
   </style>
 </head>
@@ -199,104 +206,248 @@
     <a href="#">Vidéo linéaire</a>
     <a href="credits.html">Crédits</a>
   </nav>
-
+  
   <!-- Arrière-plan -->
   <div class="background-image"></div>
-
-  <!-- Contenu principal : Remplacement de la vidéo par une image avec zones cliquables -->
+  
+  <!-- Contenu principal : Container pour le point courant -->
   <div class="main-content">
-    <div class="image-container">
-      <img id="placeholder-image" src="placeholder.jpg" alt="Image de présentation">
-      <!-- Zones cliquables intégrées sur l'image -->
-      <div id="clickable-zone1" class="clickable-zone"></div>
-      <div id="clickable-zone2" class="clickable-zone"></div>
-      <div id="clickable-zone3" class="clickable-zone"></div>
-      <div id="clickable-zone4" class="clickable-zone"></div>
+    <div class="image-container" id="image-container">
+      <!-- L'image et les zones cliquables seront générées dynamiquement -->
     </div>
   </div>
-
-  <!-- Chemin de progression avec déplacement du character -->
-  <div class="chemin-progression">
-    <div class="points">
-      <button data-point="sante" class="point point-actif"></button>
-      <button data-point="accidents"></button>
-      <button data-point="aides"></button>
-      <button data-point="legal"></button>
+  
+  <!-- Barre de progression -->
+  <div class="chemin-progression" id="progress-bar">
+    <div class="progress-container">
+      <div class="points-container" id="points-container">
+        <!-- Boutons insérés dynamiquement -->
+      </div>
+      <div class="labels-container" id="labels-container">
+        <!-- Étiquettes insérées dynamiquement -->
+      </div>
+      <div id="character" class="character"></div>
     </div>
-    <div class="titres">
-      <span>Santé</span>
-      <span>Accidents</span>
-      <span>Aides</span>
-      <span>Légal</span>
-    </div>
-    <!-- Élément mobile sur le chemin -->
-    <div class="character" id="character"></div>
   </div>
-
-  <!-- Vidéos secondaires (pop-up) -->
-  <div id="video-card1" class="video-card">
-    <video id="secondary-video1" playsinline controls>
-      <source src="./MVI_0094.MP4" type="video/mp4">
-    </video>
-  </div>
-  <div id="video-card2" class="video-card">
-    <video id="secondary-video2" playsinline controls>
-      <source src="./MVI_0094.MP4" type="video/mp4">
-    </video>
-  </div>
-  <div id="video-card3" class="video-card">
-    <video id="secondary-video3" playsinline controls>
-      <source src="./MVI_0094.MP4" type="video/mp4">
-    </video>
-  </div>
-  <div id="video-card4" class="video-card">
-    <video id="secondary-video4" playsinline controls>
-      <source src="./MVI_0094.MP4" type="video/mp4">
-    </video>
-  </div>
-
+  
+  <!-- Container pour les video-cards générées dynamiquement -->
+  <div id="video-card-container"></div>
+  
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      /* --- Gestion des zones cliquables sur l'image --- */
-      const clickableZones = document.querySelectorAll('.clickable-zone');
-      clickableZones.forEach((zone, index) => {
-        zone.addEventListener('click', function() {
-          // Identifier le video-card correspondant (en fonction de l'index)
-          const videoCard = document.getElementById('video-card' + (index + 1));
-          if(videoCard) {
-            videoCard.classList.add('show');
-            const videoElem = videoCard.querySelector('video');
-            // Dès que les métadonnées de la vidéo sont chargées, on positionne le temps de départ à 10 secondes
-            videoElem.addEventListener('loadedmetadata', function() {
-              videoElem.currentTime = 10;
-            }, { once: true });
-            videoElem.play();
-          }
+    /*********************
+     * Données et Variables
+     *********************/
+    // Structure modifiée : chaque point a une image et un tableau "zones" avec une vidéo pour chaque zone.
+    const pointsData = [
+      { 
+        image: "../PICTURE/newfond.png",
+        zones: [
+          { video: "../PICTURE/MVI_0094.mp4" },
+          { video: "../PICTURE/MVI_0094.mp4" },
+          { video: "../PICTURE/MVI_0094.mp4" },
+          { video: "../PICTURE/MVI_0094.mp4" }
+        ]
+      },
+      { 
+        image: "../PICTURE/newfond.png",
+        zones: [
+          { video: "../PICTURE/MVI_0094.mp4" },
+          { video: "../PICTURE/MVI_0094.mp4" },
+          { video: "../PICTURE/MVI_0096.mp4" }
+        ]
+      },
+      { 
+        image: "../PICTURE/newfond.png",
+        zones: [
+          { video: "../PICTURE/MVI_0094.mp4" },
+          { video: "../PICTURE/MVI_0093.mp4" }
+        ]
+      },
+      { 
+        image: "../PICTURE/newfond.png",
+        zones: [
+          { video: "MVI_0103.mp4" }
+        ]
+      }
+    ];
+    let currentPointIndex = 0;
+    let watchedCount = 0; // Nombre de vidéos visionnées dans le point courant
+    
+    /*********************
+     * Fonctions de chargement
+     *********************/
+    function loadProgressBar() {
+      const pointsContainer = document.getElementById("points-container");
+      const labelsContainer = document.getElementById("labels-container");
+      pointsContainer.innerHTML = "";
+      labelsContainer.innerHTML = "";
+      
+      // Pour toujours 4 points
+      pointsData.forEach((pt, index) => {
+        const btn = document.createElement("button");
+        btn.dataset.pointIndex = index;
+        if (index === currentPointIndex) {
+          btn.classList.add("point-actif");
+        }
+        pointsContainer.appendChild(btn);
+  
+        const label = document.createElement("span");
+        if(index === 0) label.textContent = "Santé";
+        else if(index === 1) label.textContent = "Accidents";
+        else if(index === 2) label.textContent = "Aides";
+        else if(index === 3) label.textContent = "Légal";
+        labelsContainer.appendChild(label);
+  
+        // Navigation manuelle (optionnelle)
+        btn.addEventListener("click", () => {
+          currentPointIndex = index;
+          loadPoint(currentPointIndex);
+          updateProgressBar();
         });
       });
-
-      /* --- Gestion du chemin de progression et du déplacement du character --- */
-      const points = document.querySelectorAll('.points button');
-      const character = document.getElementById('character');
-      
-      // Positions (en pourcentage) pour le character selon le point cliqué
-      const positionsCharacter = {
-          sante: '10%',
-          accidents: '35%',
-          aides: '60%',
-          legal: '85%'
-      };
-
-      points.forEach(point => {
-          point.addEventListener('click', function () {
-              const pointId = this.getAttribute('data-point');
-              // Déplacer le character sur la ligne de progression
-              character.style.left = positionsCharacter[pointId];
-              // Mettre à jour le point actif
-              points.forEach(p => p.classList.remove('point-actif'));
-              this.classList.add('point-actif');
-          });
+      updateCharacterPosition();
+    }
+    
+    function updateCharacterPosition() {
+      const pointsContainer = document.getElementById("points-container");
+      if (!pointsContainer) return;
+      const activeBtn = pointsContainer.querySelector(`button[data-point-index="${currentPointIndex}"]`);
+      if (activeBtn) {
+        const containerRect = pointsContainer.getBoundingClientRect();
+        const btnRect = activeBtn.getBoundingClientRect();
+        // Calculer le centre du bouton
+        const leftOffset = btnRect.left - containerRect.left + btnRect.width / 2;
+        const character = document.getElementById("character");
+        character.style.left = leftOffset + "px";
+      }
+    }
+    
+    function updateProgressBar() {
+      const pointsContainer = document.getElementById("points-container");
+      if (!pointsContainer) return;
+      pointsContainer.querySelectorAll("button").forEach(btn => btn.classList.remove("point-actif"));
+      const activeBtn = pointsContainer.querySelector(`button[data-point-index="${currentPointIndex}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add("point-actif");
+      }
+      updateCharacterPosition();
+    }
+    
+    function loadPoint(index) {
+      currentPointIndex = index;
+      watchedCount = 0;
+      const pointData = pointsData[index];
+      const container = document.getElementById("image-container");
+      container.innerHTML = "";
+  
+      // Insérer l'image de fond
+      const img = document.createElement("img");
+      img.className = "bg-image";
+      img.src = pointData.image;
+      container.appendChild(img);
+  
+      // Générer les zones cliquables selon le nombre de zones définies dans pointData.zones
+      const zonesCount = pointData.zones.length;
+      let positions = [];
+      if(zonesCount === 4) {
+        positions = [
+          { top: "20%", left: "10%" },
+          { top: "20%", right: "10%" },
+          { bottom: "20%", left: "10%" },
+          { bottom: "20%", right: "10%" }
+        ];
+      } else if(zonesCount === 3) {
+        positions = [
+          { top: "20%", left: "10%" },
+          { top: "20%", right: "10%" },
+          { bottom: "20%", left: "50%", transform: "translateX(-50%)" }
+        ];
+      } else if(zonesCount === 2) {
+        positions = [
+          { top: "50%", left: "20%" },
+          { top: "50%", right: "20%" }
+        ];
+      } else {
+        for(let i = 0; i < zonesCount; i++){
+          positions.push({ top: "50%", left: (10 + i*10) + "%" });
+        }
+      }
+  
+      for(let i = 0; i < zonesCount; i++){
+        const zone = document.createElement("div");
+        zone.className = "clickable-zone";
+        const pos = positions[i] || {};
+        for(let prop in pos) {
+          zone.style[prop] = pos[prop];
+        }
+        zone.dataset.zoneIndex = i;
+        zone.dataset.watched = "false";
+        zone.addEventListener("click", function(){
+          if(zone.dataset.watched === "true") return;
+          playVideoForZone(i);
+        });
+        container.appendChild(zone);
+      }
+      updateProgressBar();
+    }
+    
+    /*********************
+     * Lecture vidéo et transition
+     *********************/
+    function playVideoForZone(zoneIndex) {
+      // Récupérer la vidéo associée à la zone
+      const videoSource = pointsData[currentPointIndex].zones[zoneIndex].video;
+  
+      const videoCard = document.createElement("div");
+      videoCard.className = "video-card";
+      const video = document.createElement("video");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("controls", "");
+      const source = document.createElement("source");
+      source.src = videoSource;
+      source.type = "video/mp4";
+      video.appendChild(source);
+      videoCard.appendChild(video);
+      document.body.appendChild(videoCard);
+  
+      setTimeout(() => {
+        videoCard.classList.add("show");
+      }, 100);
+  
+      video.addEventListener("loadedmetadata", function(){
+        video.currentTime = 10;
+      }, { once: true });
+  
+      video.play();
+  
+      video.addEventListener("ended", function(){
+        videoCard.classList.remove("show");
+        setTimeout(() => { videoCard.remove(); }, 500);
+        const container = document.getElementById("image-container");
+        const zones = container.querySelectorAll(".clickable-zone");
+        zones[zoneIndex].dataset.watched = "true";
+        watchedCount++;
+        if(watchedCount >= pointsData[currentPointIndex].zones.length) {
+          setTimeout(() => { nextPoint(); }, 1000);
+        }
       });
+    }
+    
+    function nextPoint() {
+      if(currentPointIndex < pointsData.length - 1) {
+        loadPoint(currentPointIndex + 1);
+        updateProgressBar();
+      } else {
+        console.log("Tous les points sont terminés.");
+      }
+    }
+    
+    /*********************
+     * Initialisation
+     *********************/
+    document.addEventListener("DOMContentLoaded", function(){
+      loadProgressBar();
+      loadPoint(0);
     });
   </script>
 </body>
