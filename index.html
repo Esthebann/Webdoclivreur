@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>- La maison des livreurs Vidéo</title>
+  <style>
+    /* Barre de navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 9999;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    /* Styles généraux */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #525050;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('background.jpg') no-repeat center center;
+      background-size: cover;
+      z-index: 1;
+    }
+    .background-image::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: 2;
+    }
+    /* Conteneur principal */
+    .main-content {
+      margin-top: 50px;
+      margin-bottom: 72.88px;
+      height: calc(100vh - 50px - 72.88px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    /* Container de la vidéo */
+    .container {
+      position: relative;
+      width: 80%;
+      max-width: 700px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container video {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      transform: translateY(-10px); /* Ajustez cette valeur selon vos besoins */
+    }
+    /* Zones cliquables */
+    .clickable-zone {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      /* Par défaut, elles peuvent être cachées */
+      display: none;
+    }
+    .clickable-zone:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+    #clickable-zone1 { background-color: rgba(0, 0, 255, 0.7); border-color: blue; }
+    #clickable-zone2 { background-color: rgba(255, 0, 0, 0.7); border-color: red; }
+    #clickable-zone3 { background-color: rgba(0, 255, 0, 0.7); border-color: green; }
+    #clickable-zone4 { background-color: rgba(255, 255, 0, 0.7); border-color: yellow; }
+    /* Vidéos secondaires (pop-up) */
+    .video-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(20px);
+      width: 60%;
+      max-width: 600px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 10;
+      display: none;
+    }
+    .video-card.show {
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    .video-card video { width: 100%; display: block; }
+    /* Timeline (route) */
+    .timeline-container {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1280px;
+      height: 72.88px;
+      background: #444;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 10px 10px 50px;
+      overflow: hidden;
+    }
+    .road {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 40px,
+        #fff 40px,
+        #fff 60px
+      );
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .timeline-wrapper {
+      flex: 0 0 auto;
+      width: 1136px;
+      height: 10px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+    }
+    .timeline-bar {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    /* Checkpoints */
+    .checkpoint {
+      position: absolute;
+      top: -5px;
+      cursor: pointer;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 70;
+    }
+    .checkpoint .marker {
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border: 1px solid #888;
+      transform: rotate(45deg);
+      margin: 0 auto;
+      animation: pulsate 1.5s ease-out infinite;
+    }
+    @keyframes pulsate {
+      0% { transform: scale(1) rotate(45deg); }
+      50% { transform: scale(1.2) rotate(45deg); }
+      100% { transform: scale(1) rotate(45deg); }
+    }
+    .checkpoint .label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #fff;
+      text-shadow: 1px 1px 2px #000;
+    }
+    /* Cycliste */
+    .character {
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: url('./cycliste.png') no-repeat center;
+      background-size: contain;
+      transition: left 0.3s ease;
+      z-index: 80;
+    }
+    /* Restaurant */
+    .restaurant {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: auto;
+      z-index: 80;
+    }
+    /* Bulle de texte */
+    .message-bubble {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      font-size: 18px;
+      color: #333;
+      cursor: pointer;
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <nav>
+    <a href="./accueil.html">Accueil</a>
+    <a href="#">Vidéos</a>
+    <a href="#">Vidéo linéaire</a>
+    <a href="./credits.html">Crédits</a>
+  </nav>
+
+  <!-- Arrière-plan -->
+  <div class="background-image"></div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <div class="container">
+      <video id="video" autoplay muted playsinline>
+        <source src="MVI_0063.MP4" type="video/mp4">
+        <track kind="subtitles" src="subtitles.vtt" srclang="fr" label="Français" default>
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+      <div id="clickable-zone1" class="clickable-zone"></div>
+      <div id="clickable-zone2" class="clickable-zone"></div>
+      <div id="clickable-zone3" class="clickable-zone"></div>
+      <div id="clickable-zone4" class="clickable-zone"></div>
+    </div>
+  </div>
+
+  <!-- Timeline (route) -->
+  <div class="timeline-container">
+    <div class="road"></div>
+    <div class="timeline-wrapper">
+      <div class="timeline-bar" id="timeline-bar">
+        <div class="checkpoint" id="checkpoint1">
+          <div class="marker"></div>
+          <div class="label">Chapitre 1</div>
+        </div>
+        <div class="checkpoint" id="checkpoint2">
+          <div class="marker"></div>
+          <div class="label">Chapitre 2</div>
+        </div>
+      </div>
+    </div>
+    <img id="restaurant" src="restaurant.png" alt="Restaurant" class="restaurant">
+    <div class="character" id="character"></div>
+  </div>
+
+  <!-- Bulle de texte finale -->
+  <div id="message-bubble" class="message-bubble">Merci pour votre commande</div>
+
+  <!-- Vidéos secondaires -->
+  <div id="video-card1" class="video-card">
+    <video id="secondary-video1" playsinline>
+      <source src="./MVI_0094.MP4" type="video/mp4">
+    </video>
+  </div>
+  <div id="video-card2" class="video-card">
+    <video id="secondary-video2" playsinline>
+      <source src="./MVI_0094.MP4" type="video/mp4">
+    </video>
+  </div>
+  <div id="video-card3" class="video-card">
+    <video id="secondary-video3" playsinline>
+      <source src="./MVI_0094.MP4" type="video/mp4">
+    </video>
+  </div>
+  <div id="video-card4" class="video-card">
+    <video id="secondary-video4" playsinline>
+      <source src="./MVI_0094.MP4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    // Configuration
+    const config = {
+      checkpoints: [10, 20],
+      roadSpeed: 40,
+      period: 60
+    };
+
+    // Mapping des zones cliquables
+    const zonesMapping = {
+      "clickable-zone1": { card: "video-card1", video: "secondary-video1", checkpoint: 1 },
+      "clickable-zone2": { card: "video-card2", video: "secondary-video2", checkpoint: 1 },
+      "clickable-zone3": { card: "video-card3", video: "secondary-video3", checkpoint: 2 },
+      "clickable-zone4": { card: "video-card4", video: "secondary-video4", checkpoint: 2 }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById("video");
+      const clickableZones = Array.from(document.querySelectorAll(".clickable-zone"));
+      const character = document.getElementById("character");
+      const checkpointElems = {
+        1: document.getElementById("checkpoint1"),
+        2: document.getElementById("checkpoint2")
+      };
+      const road = document.querySelector('.road');
+      const messageBubble = document.getElementById("message-bubble");
+
+      let completedVideos = { 1: 0, 2: 0 };
+      let validatedCheckpoints = { 1: false, 2: false };
+      let mainVideoPausedTime = null;
+
+      const updateTimeline = () => {
+        if (!video.duration) return;
+        const container = document.querySelector('.timeline-container');
+        const wrapper = document.querySelector('.timeline-wrapper');
+        const containerRect = container.getBoundingClientRect();
+        const wrapperRect = wrapper.getBoundingClientRect();
+
+        config.checkpoints.forEach((time, idx) => {
+          const cpElem = checkpointElems[idx + 1];
+          cpElem.style.left = `${(time / video.duration) * wrapperRect.width}px`;
+        });
+
+        const progressRatio = video.currentTime / video.duration;
+        if (video.currentTime >= video.duration) {
+          const restaurantElem = document.getElementById('restaurant');
+          const restaurantRect = restaurantElem.getBoundingClientRect();
+          character.style.left = `${restaurantRect.left - character.offsetWidth - 5}px`;
+        } else {
+          const wrapperOffsetLeft = wrapperRect.left - containerRect.left;
+          character.style.left = `${wrapperOffsetLeft + progressRatio * wrapperRect.width - (character.offsetWidth / 2)}px`;
+        }
+      };
+
+      const updateRoad = () => {
+        const offset = (video.currentTime * config.roadSpeed) % config.period;
+        road.style.backgroundPosition = `-${offset}px 0`;
+        requestAnimationFrame(updateRoad);
+      };
+
+      // Nouvelle version : se baser sur le conteneur plutôt que sur la vidéo seule
+      const positionClickableZones = () => {
+        const container = document.querySelector('.container');
+        const containerRect = container.getBoundingClientRect();
+
+        // Calculer des positions relatives au conteneur
+        const positions = [
+          { left: containerRect.width / 3 - 50, top: containerRect.height / 2 - 50 },
+          { left: (2 * containerRect.width) / 3 - 50, top: containerRect.height / 2 - 50 },
+          { left: containerRect.width / 4 - 50, top: containerRect.height / 3 - 50 },
+          { left: (3 * containerRect.width) / 4 - 50, top: containerRect.height / 3 - 50 }
+        ];
+
+        clickableZones.forEach((zone, i) => {
+          zone.style.left = `${positions[i].left}px`;
+          zone.style.top = `${positions[i].top}px`;
+          // Vous pouvez temporairement forcer l'affichage pour le débug
+          // zone.style.display = "block";
+        });
+      };
+
+      const showZone = (index) => {
+        clickableZones[index].style.display = "block";
+      };
+
+      const showVideoCard = (zoneId) => {
+        const { card, video: vid, checkpoint } = zonesMapping[zoneId];
+        const zoneIndex = parseInt(zoneId.slice(-1)) - 1;
+        clickableZones[zoneIndex].style.display = "none";
+        document.querySelectorAll('.video-card').forEach(card => card.classList.remove("show"));
+        const cardElem = document.getElementById(card);
+        cardElem.classList.add("show");
+        const videoElem = document.getElementById(vid);
+        videoElem.play();
+        videoElem.addEventListener('ended', () => {
+          closeVideoCard(card, vid, checkpoint);
+        }, { once: true });
+      };
+
+      const closeVideoCard = (card, vid, checkpoint) => {
+        document.getElementById(card).classList.remove("show");
+        const secVideo = document.getElementById(vid);
+        secVideo.pause();
+        secVideo.currentTime = 0;
+        completedVideos[checkpoint]++;
+        if (completedVideos[checkpoint] === 2) {
+          validatedCheckpoints[checkpoint] = true;
+          if (mainVideoPausedTime !== null) {
+            video.currentTime = mainVideoPausedTime;
+            video.play();
+            mainVideoPausedTime = null;
+          }
+          completedVideos[checkpoint] = 0;
+        }
+      };
+
+      const resetCheckpoint = (checkpoint) => {
+        validatedCheckpoints[checkpoint] = false;
+        completedVideos[checkpoint] = 0;
+        video.currentTime = config.checkpoints[checkpoint - 1];
+        video.pause();
+        clickableZones.forEach(zone => zone.style.display = "none");
+        if (checkpoint === 1) { showZone(0); showZone(1); }
+        else if (checkpoint === 2) { showZone(2); showZone(3); }
+        mainVideoPausedTime = video.currentTime;
+      };
+
+      video.addEventListener("loadedmetadata", updateTimeline);
+      video.addEventListener("timeupdate", () => {
+        updateTimeline();
+        const currentTime = video.currentTime;
+        config.checkpoints.forEach((time, idx) => {
+          const cp = idx + 1;
+          if (currentTime >= time && currentTime < time + 1 && !validatedCheckpoints[cp]) {
+            video.pause();
+            mainVideoPausedTime = currentTime;
+            if (cp === 1) { showZone(0); showZone(1); }
+            if (cp === 2) { showZone(2); showZone(3); }
+          }
+        });
+      });
+
+      video.addEventListener("ended", () => {
+        messageBubble.style.display = "block";
+      });
+
+      Object.keys(zonesMapping).forEach(zoneId => {
+        document.getElementById(zoneId).addEventListener("click", () => showVideoCard(zoneId));
+      });
+
+      Object.keys(checkpointElems).forEach(cp => {
+        checkpointElems[cp].addEventListener("click", () => resetCheckpoint(parseInt(cp)));
+      });
+
+      messageBubble.addEventListener("click", () => {
+        window.location.href = "./credits.html";
+      });
+
+      positionClickableZones();
+      window.addEventListener('resize', positionClickableZones);
+      requestAnimationFrame(updateRoad);
+    });
+  </script>
+</body>
+</html>
