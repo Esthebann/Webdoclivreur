@@ -21,7 +21,7 @@ html, body {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url("./u.png") no-repeat center center/cover;
+    background-image: url("PICTURE/newfond.png");no-repeat center center/cover;
     display: flex;
     align-items: center;
     padding-left: 11%; /* Légèrement plus à gauche */
