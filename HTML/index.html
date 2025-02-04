@@ -4,9 +4,192 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>- La maison des livreurs Vidéo</title>
-  <link rel="stylesheet" href="../CSS/index.css">
+  <style>
+    /* Barre de navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 9999;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 10px 20px;
+        transition: 0.3s;
+    }
+    nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+    }
 
+    /* Styles généraux */
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #525050;
+        font-family: sans-serif;
+        overflow: hidden;
+    }
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('background.jpg') no-repeat center center;
+        background-size: cover;
+        z-index: 1;
+    }
+    .background-image::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+        z-index: 2;
+    }
+    /* Contenu principal */
+    .main-content {
+        margin-top: 50px;
+        margin-bottom: 72.88px;
+        height: calc(100vh - 50px - 72.88px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+    }
+    /* Container de l'image (remplaçant la vidéo) */
+    .image-container {
+        position: relative;
+        width: 80%;
+        max-width: 700px;
+    }
+    .image-container img {
+        width: 100%;
+        display: block;
+    }
+    /* Zones cliquables sur l'image */
+    .clickable-zone {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 2px solid;
+        cursor: pointer;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .clickable-zone:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+    /* Positionnement et couleurs des zones */
+    #clickable-zone1 { background-color: rgba(0, 0, 255, 0.7); border-color: blue; top: 20%; left: 10%; }
+    #clickable-zone2 { background-color: rgba(255, 0, 0, 0.7); border-color: red; top: 20%; right: 10%; }
+    #clickable-zone3 { background-color: rgba(0, 255, 0, 0.7); border-color: green; bottom: 20%; left: 10%; }
+    #clickable-zone4 { background-color: rgba(255, 255, 0, 0.7); border-color: yellow; bottom: 20%; right: 10%; }
 
+    /* Vidéos secondaires (pop-up) */
+    .video-card {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateY(20px);
+        width: 60%;
+        max-width: 600px;
+        background: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        z-index: 10;
+        display: none;
+    }
+    .video-card.show {
+        display: block;
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    .video-card video {
+        width: 100%;
+        display: block;
+    }
+    
+    /* Nouveau Chemin de progression */
+    .chemin-progression {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1280px;
+        background: #444;
+        padding: 10px 10px 10px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 50;
+    }
+    .points {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1136px;
+        margin-bottom: 10px;
+    }
+    .points button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ff6347;
+        border: 4px solid #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .points button:hover {
+        background-color: #e5533d;
+        transform: scale(1.1);
+    }
+    .points .point-actif {
+        background-color: #333;
+        border-color: #ff6347;
+    }
+    .titres {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1136px;
+        font-size: 16px;
+        color: #fff;
+    }
+    .titres span {
+        flex: 1;
+        text-align: center;
+    }
+    
+    /* Élément mobile (Character) qui se déplace sur le chemin */
+    .character {
+        position: absolute;
+        top: -50px; /* Ajustez la position verticale au besoin */
+        width: 40px;
+        height: 40px;
+        background: url('../PICTURE/cycliste.png') no-repeat center;
+        background-size: contain;
+        transition: left 0.3s ease;
+        z-index: 80;
+    }
+  </style>
 </head>
 <body>
   <!-- Barre de navigation -->
@@ -20,14 +203,11 @@
   <!-- Arrière-plan -->
   <div class="background-image"></div>
 
-  <!-- Contenu principal -->
+  <!-- Contenu principal : Remplacement de la vidéo par une image avec zones cliquables -->
   <div class="main-content">
-    <div class="container">
-      <video id="video" autoplay muted playsinline>
-        <source src="MVI_0063.MP4" type="video/mp4">
-        <track kind="subtitles" src="subtitles.vtt" srclang="fr" label="Français" default>
-        Votre navigateur ne supporte pas la vidéo.
-      </video>
+    <div class="image-container">
+      <img id="placeholder-image" src="placeholder.jpg" alt="Image de présentation">
+      <!-- Zones cliquables intégrées sur l'image -->
       <div id="clickable-zone1" class="clickable-zone"></div>
       <div id="clickable-zone2" class="clickable-zone"></div>
       <div id="clickable-zone3" class="clickable-zone"></div>
@@ -35,49 +215,89 @@
     </div>
   </div>
 
-  <!-- Timeline (route) -->
-  <div class="timeline-container">
-    <div class="road"></div>
-    <div class="timeline-wrapper">
-      <div class="timeline-bar" id="timeline-bar">
-        <div class="checkpoint" id="checkpoint1">
-          <div class="marker"></div>
-          <div class="label">Chapitre 1</div>
-        </div>
-        <div class="checkpoint" id="checkpoint2">
-          <div class="marker"></div>
-          <div class="label">Chapitre 2</div>
-        </div>
-      </div>
+  <!-- Chemin de progression avec déplacement du character -->
+  <div class="chemin-progression">
+    <div class="points">
+      <button data-point="sante" class="point point-actif"></button>
+      <button data-point="accidents"></button>
+      <button data-point="aides"></button>
+      <button data-point="legal"></button>
     </div>
-    <img id="restaurant" src="restaurant.png" alt="Restaurant" class="restaurant">
+    <div class="titres">
+      <span>Santé</span>
+      <span>Accidents</span>
+      <span>Aides</span>
+      <span>Légal</span>
+    </div>
+    <!-- Élément mobile sur le chemin -->
     <div class="character" id="character"></div>
   </div>
 
-  <!-- Bulle de texte finale -->
-  <div id="message-bubble" class="message-bubble">Merci pour votre commande</div>
-
-  <!-- Vidéos secondaires -->
+  <!-- Vidéos secondaires (pop-up) -->
   <div id="video-card1" class="video-card">
-    <video id="secondary-video1" playsinline>
+    <video id="secondary-video1" playsinline controls>
       <source src="./MVI_0094.MP4" type="video/mp4">
     </video>
   </div>
   <div id="video-card2" class="video-card">
-    <video id="secondary-video2" playsinline>
+    <video id="secondary-video2" playsinline controls>
       <source src="./MVI_0094.MP4" type="video/mp4">
     </video>
   </div>
   <div id="video-card3" class="video-card">
-    <video id="secondary-video3" playsinline>
+    <video id="secondary-video3" playsinline controls>
       <source src="./MVI_0094.MP4" type="video/mp4">
     </video>
   </div>
   <div id="video-card4" class="video-card">
-    <video id="secondary-video4" playsinline>
+    <video id="secondary-video4" playsinline controls>
       <source src="./MVI_0094.MP4" type="video/mp4">
     </video>
   </div>
-  <script src="../JS/index.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* --- Gestion des zones cliquables sur l'image --- */
+      const clickableZones = document.querySelectorAll('.clickable-zone');
+      clickableZones.forEach((zone, index) => {
+        zone.addEventListener('click', function() {
+          // Identifier le video-card correspondant (en fonction de l'index)
+          const videoCard = document.getElementById('video-card' + (index + 1));
+          if(videoCard) {
+            videoCard.classList.add('show');
+            const videoElem = videoCard.querySelector('video');
+            // Dès que les métadonnées de la vidéo sont chargées, on positionne le temps de départ à 10 secondes
+            videoElem.addEventListener('loadedmetadata', function() {
+              videoElem.currentTime = 10;
+            }, { once: true });
+            videoElem.play();
+          }
+        });
+      });
+
+      /* --- Gestion du chemin de progression et du déplacement du character --- */
+      const points = document.querySelectorAll('.points button');
+      const character = document.getElementById('character');
+      
+      // Positions (en pourcentage) pour le character selon le point cliqué
+      const positionsCharacter = {
+          sante: '10%',
+          accidents: '35%',
+          aides: '60%',
+          legal: '85%'
+      };
+
+      points.forEach(point => {
+          point.addEventListener('click', function () {
+              const pointId = this.getAttribute('data-point');
+              // Déplacer le character sur la ligne de progression
+              character.style.left = positionsCharacter[pointId];
+              // Mettre à jour le point actif
+              points.forEach(p => p.classList.remove('point-actif'));
+              this.classList.add('point-actif');
+          });
+      });
+    });
+  </script>
 </body>
 </html>
