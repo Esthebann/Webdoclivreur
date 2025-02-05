@@ -1,10 +1,9 @@
-/* Réinitialisation globale */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-html, body {
+  }
+  html, body {
     height: 100%;
     font-family: "Goudy Old Style", Garamond, serif;
     font-size: calc(0.8rem + 0.5vw);
@@ -14,96 +13,140 @@ html, body {
     text-align: left;
     background: black;
     overflow: hidden;
-}
-
-/* SECTION INTRO */
-.intro {
+  }
+  #splash {
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    animation: splashAnim 3s forwards;
+  }
+  #splash img {
+    max-width: 300px;
+    width: 100%;
+    filter: blur(10px);
+    opacity: 0;
+    animation: logoAnim 3s forwards;
+  }
+  @keyframes splashAnim {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes logoAnim {
+    0% { filter: blur(10px); opacity: 0; transform: scale(0.8); }
+    50% { filter: blur(0); opacity: 1; transform: scale(1); }
+    100% { filter: blur(10px); opacity: 0; transform: scale(1.2); }
+  }
+  .intro {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("../PICTURE/newfond.png"); /* Remonte d'un dossier */
+    background-image: url("../PICTURE/newfond.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     display: flex;
-    align-items: center;
-    padding-left: 11%; /* Légèrement plus à gauche */
-}
-
-/* Contenu principal */
-.intro-header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 11%;
+  }
+  .intro-header {
     width: 35em;
     max-width: 90%;
-    z-index: 2;
     text-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-}
-
-/* Titre */
-.intro-title h1 {
+    margin-bottom: 20px;
+  }
+  .intro-title h1 {
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 0.2em; /* Moins d’espace entre le titre et la byline */
+    margin-bottom: 0.2em;
     color: white;
-}
-
-/* Byline */
-.intro-byline {
+  }
+  .intro-byline {
     font-style: italic;
     font-size: 1.2rem;
     color: white;
-    margin-left: 0.5em; /* Légèrement décalé à gauche */
-}
-
-/* Bouton "Commencer" */
-.intro-begin {
-    position: absolute;
-    z-index: 1000;
-    left: 0;
+    margin-left: 0.5em;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: flex-start;
+    max-width: 200px;
+  }
+  .button-container button {
+    width: 100%;
     text-transform: uppercase;
     border: none;
-    border-radius: 0 99999px 99999px 0;
-    padding: 1em 1.5em;
-    margin-left: -0.375em;
-    line-height: 1;
-    color: #989797;
-    background: #fff;
-    bottom: calc(1rem + 4vw);
+    border-radius: 50px;
+    padding: 1em 2em;
     font-size: 1.1rem;
-    cursor: pointer;
-    transition: color 0.3s, box-shadow 0.2s;
-}
-.intro-begin:hover,
-.intro-begin:active {
+    background: #fff;
     color: #333;
-    box-shadow: inset 0 0 0.5em blanchedalmond, 0 0 0.5em -0.25em rgba(255, 255, 255, 0.5);
-    transform: translateX(0.375em);
-}
-
-/* Animation de transition */
-.transition-overlay {
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  .button-container button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+  }
+  .button-container button:active {
+    transform: scale(0.98);
+  }
+  .transition-overlay {
     position: fixed;
     top: 0;
-    left: 100%; /* Hors de l'écran */
+    left: 100%;
     width: 100vw;
     height: 100vh;
     background: rgb(0, 0, 0);
     z-index: 2000;
     transition: left 0.8s ease-in-out;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
+  }
+  .transition-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .transition-message p {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+  .transition-message p.msg1 {
+    animation-delay: 4.5s;
+  }
+  .transition-message p.msg2 {
+    animation-delay: 6.5s;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 600px) {
     .intro {
-        padding-left: 5%;
+      padding-left: 5%;
     }
     .intro-title h1 {
-        font-size: 2rem;
+      font-size: 2rem;
     }
     .intro-byline {
-        font-size: 1rem;
+      font-size: 1rem;
     }
-    .intro-begin {
-        font-size: 0.9rem;
-        padding: 0.9em 1.1em;
+    .button-container button {
+      font-size: 0.9rem;
+      padding: 0.9em 1.1em;
     }
-}
+  }
+  
