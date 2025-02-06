@@ -10,45 +10,78 @@ nav {
     align-items: center;
     justify-content: space-around;
     z-index: 9999;
-}
-nav a {
+  }
+  nav a {
     color: white;
     text-decoration: none;
     font-size: 16px;
     padding: 10px 20px;
     transition: 0.3s;
-}
-nav a:hover {
+  }
+  nav a:hover {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-}
-
-/* Styles généraux */
-body {
+  }
+  
+  /* Menu déroulant pour les langues */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown .dropbtn {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: 0.3s;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 10000;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Styles généraux */
+  body {
     margin: 0;
     padding: 0;
     background-color: black;
     color: white;
     font-family: serif;
     text-align: center;
-}
-main {
+  }
+  main {
     padding-top: 70px;
-}
-h1 {
+  }
+  h1 {
     font-size: 2.5em;
     margin: 50px 0;
-}
-
-/* Boutons */
-.buttons {
+  }
+  
+  /* Boutons */
+  .buttons {
     margin: 20px 0;
     display: flex;
     justify-content: center;
     gap: 15px;
-}
-.buttons button {
-    text-decoration: none;
+  }
+  .buttons button {
     font-size: 16px;
     padding: 10px 18px;
     border: 2px solid white;
@@ -56,48 +89,49 @@ h1 {
     background: transparent;
     color: white;
     transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.buttons button:hover {
+  }
+  .buttons button:hover {
     transform: scale(1.05);
-}
-.buttons button.white {
+  }
+  .buttons button.white {
     background-color: white;
     color: black;
-}
-.buttons button.black {
+  }
+  .buttons button.black {
     background-color: black;
     color: white;
-}
-
-/* Sous-titre */
-.subtitle {
+  }
+  
+  /* Sous-titre */
+  .subtitle {
     font-size: 16px;
     margin: 30px 0;
     opacity: 0.7;
-}
-
-/* Section crédits / À PROPOS */
-.credits {
+  }
+  
+  /* Section crédits / À PROPOS */
+  .credits {
     margin: 50px auto 0;
     text-align: center;
     max-width: 600px;
     transform: translateX(0%);
     transition: transform 0.5s ease-in-out;
-    min-height: 100px; /* Empêche un effet de saut */
-}
-.credits h3 {
+    min-height: 100px;
+  }
+  .credits h3 {
     font-size: 1.4em;
     border-bottom: 1px solid white;
     padding-bottom: 5px;
     margin-bottom: 10px;
-}
-.credits p {
+  }
+  .credits p {
     margin: 10px 0;
-}
-.credits .remerciement {
+  }
+  .credits .remerciement {
     margin-top: 20px;
     font-size: 1em;
     font-style: italic;
     opacity: 0.8;
     line-height: 1.5;
-}
+  }
+  

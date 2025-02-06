@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zoom image de fond sans passer sur la nav ni la route</title>
-  <!-- Lien vers le fichier CSS externe -->
+  <title>Background Image Zoom Without Nav and Route</title>
+  <!-- Lien vers le fichier CSS spécifique à la version anglaise -->
   <link rel="stylesheet" href="..//CSS/index.css">
 </head>
 <body>
   <!-- NAV (50px) -->
   <nav>
-    <a href="accueil.html">Accueil</a>
-    <a href="#">Vidéos</a>
+    <a href="../HTML/accueilen.html">Home</a>
+    <a href="#">Videos</a>
     <!-- Menu déroulant pour la langue -->
     <div class="dropdown">
-      <a class="dropbtn">Langue</a>
+      <a class="dropbtn">Language</a>
       <div class="dropdown-content">
         <a href="index.html">Français</a>
-        <a href="indexen.html">Anglais</a>
-        <a href="indexes.html">Espagnol</a>
+        <a href="indexen.html">English</a>
+        <a href="indexes.html">Español</a>
       </div>
     </div>
-    <a href="credits.html">Crédits</a>
+    <a href="creditsen.html">Credits</a>
   </nav>
 
-  <!-- Image de fond floutée -->
+  <!-- Blurred background image -->
   <div class="background-image">
-    <img src="../PICTURE/accidentsfond.png" alt="Fonds">
+    <img src="../PICTURE/accidentsfond.png" alt="Background">
   </div>
 
-  <!-- CONTENU PRINCIPAL -->
+  <!-- MAIN CONTENT -->
   <div class="main-content">
     <div class="image-container" id="image-container">
-      <!-- L'image de fond et les zones cliquables seront insérées dynamiquement -->
+      <!-- The background image and clickable zones will be dynamically inserted -->
     </div>
   </div>
 
-  <!-- ROUTE ANIMÉE (80px) -->
+  <!-- Animated route (80px) at the bottom -->
   <div class="chemin-progression" id="progress-bar">
     <div class="progress-container">
       <div class="moving-line"></div>
@@ -45,10 +45,10 @@
     </div>
   </div>
 
-  <!-- Container pour les vidéo-cards dynamiques -->
+  <!-- Container for dynamic video cards -->
   <div id="video-card-container"></div>
 
-  <!-- Inclusion du fichier JavaScript externe -->
-  <script src="..//JS/index.js"></script>
+  <!-- Inclusion of the English-specific JavaScript file -->
+  <script src="..//JS/indexen.js"></script>
 </body>
 </html>

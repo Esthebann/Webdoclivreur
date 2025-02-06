@@ -1,32 +1,28 @@
-// Gestion de l'animation de la section crédits / À PROPOS
 const aboutButton = document.getElementById("aboutButton");
 const creditsSection = document.getElementById("creditsSection");
-let showingAbout = false; // État actuel
+let showingAbout = false;
 
 aboutButton.addEventListener("click", function () {
     if (!showingAbout) {
-        // Animation de sortie vers la gauche
         creditsSection.style.transform = "translateX(-100%)";
 
         creditsSection.addEventListener("transitionend", function handler() {
             creditsSection.removeEventListener("transitionend", handler);
 
-            // Mise à jour du contenu une fois l'animation terminée
             creditsSection.innerHTML = `
-              <h3>Ce web-documentaire a été réalisé par :</h3>
+              <h3>This web-documentary was created by:</h3>
               <p class="remerciement">
-                Gabriel bisson-barret <br>
-                Kilian Beney<br>
-                Brice Bréart<br>
-                Noah Laborde<br>
-                Esthebann Volle<br>
+                 Gabriel bisson-barret <br>
+                 Kilian Beney<br>
+                 Brice Bréart<br>
+                 Noah Laborde<br>
+                 Esthebann Volle<br>
               </p>
             `;
 
-            // Préparer l'animation d'entrée depuis la droite
             creditsSection.style.transition = "none";
             creditsSection.style.transform = "translateX(100%)";
-            void creditsSection.offsetWidth; // Forcer le recalcul
+            void creditsSection.offsetWidth;
             creditsSection.style.transition = "transform 0.5s ease-in-out";
             creditsSection.style.transform = "translateX(0%)";
 
@@ -34,21 +30,18 @@ aboutButton.addEventListener("click", function () {
         });
 
     } else {
-        // Animation de sortie vers la droite
         creditsSection.style.transform = "translateX(100%)";
 
         creditsSection.addEventListener("transitionend", function handler() {
             creditsSection.removeEventListener("transitionend", handler);
 
-            // Revenir au texte original
             creditsSection.innerHTML = `
-              <h3>Un grand merci à :</h3>
+              <h3>A big thank you to:</h3>
               <p class="remerciement">
-                Sans leur soutien, leur collaboration et leur confiance, ce reportage n'aurait jamais vu le jour. Leur engagement passionné a permis de capturer des moments authentiques et inoubliables, et nous leur en sommes infiniment reconnaissants.
+                Without their support, collaboration and trust, this documentary would have never seen the light of day. Their passionate commitment allowed us to capture authentic and unforgettable moments, and we are deeply grateful.
               </p>
             `;
 
-            // Préparer l'animation de retour depuis la gauche
             creditsSection.style.transition = "none";
             creditsSection.style.transform = "translateX(-100%)";
             void creditsSection.offsetWidth;

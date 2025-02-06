@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>- La maison des livreurs crédit</title>
-  <link rel="stylesheet" href="../CSS/credits.css">
-
-
+  <title>- La maison des livreurs : Crédits</title>
+  <link rel="stylesheet" href="..//CSS/credits.css">
 </head>
 <body>
-  <!-- Barre de navigation -->
+  <!-- Barre de navigation avec menu déroulant pour la langue -->
   <nav>
     <a href="accueil.html">Accueil</a>
     <a href="index.html">Vidéos</a>
-    <a href="#">Checkpoints</a>
-    <a href="./credits.html">Crédits</a>
+    <!-- Menu déroulant Langues -->
+    <div class="dropdown">
+      <a class="dropbtn">Langues</a>
+      <div class="dropdown-content">
+        <a href="credits.html">Français</a>
+        <a href="creditsen.html">Anglais</a>
+        <a href="creditses.html">Espagnol</a>
+      </div>
+    </div>
+    <a href="credits.html">Crédits</a>
   </nav>
 
   <!-- Contenu principal -->
@@ -22,7 +28,7 @@
     <h1>Le quotidien des livreurs</h1>
 
     <div class="buttons">
-      <a href="./credits.html">
+      <a href="credits.html">
         <button class="white">CRÉDITS</button>
       </a>
       <button id="aboutButton" class="black">À PROPOS</button>
@@ -34,10 +40,10 @@
     <section id="creditsSection" class="credits">
       <h3>Un grand merci à :</h3>
       <p class="remerciement">
-        Sans leur soutien, leur collaboration et leur confiance, ce reportage n'aurait jamais vu le jour. Leur engagement passionné a permis de capturer des moments authentiques et inoubliables, et nous leur en sommes infiniment reconnaissants.
+         Charle alexandre, Slimane sans leur soutien, leur collaboration et leur confiance, ce reportage n'aurait jamais vu le jour. Leur engagement passionné a permis de capturer des moments authentiques et inoubliables, et nous leur en sommes infiniment reconnaissants.
       </p>
     </section>
   </main>
-  <script src="../JS/credits.js"></script>
+  <script src="..//JS/credits.js"></script>
 </body>
 </html>

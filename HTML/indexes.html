@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoom de imagen de fondo sin pasar por la barra de navegación ni la ruta</title>
+  <!-- Enlace al archivo CSS específico para la versión en español -->
+  <link rel="stylesheet" href="..//CSS/index.css">
+</head>
+<body>
+  <!-- BARRA DE NAVEGACIÓN (50px) -->
+  <nav>
+    <a href="accueilesp.html">Inicio</a>
+    <a href="#">Vídeos</a>
+    <!-- Menú desplegable para el idioma -->
+    <div class="dropdown">
+      <a class="dropbtn">Idioma</a>
+      <div class="dropdown-content">
+        <a href="index.html">Francés</a>
+        <a href="indexen.html">Inglés</a>
+        <a href="indexes.html">Español</a>
+      </div>
+    </div>
+    <a href="creditses.html">Créditos</a>
+  </nav>
+
+  <!-- Imagen de fondo desenfocada -->
+  <div class="background-image">
+    <img src="../PICTURE/accidentsfond.png" alt="Fondo">
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main-content">
+    <div class="image-container" id="image-container">
+      <!-- La imagen de fondo y las zonas clicables se insertarán dinámicamente -->
+    </div>
+  </div>
+
+  <!-- "RUTA" ANIMADA (80px) EN LA PARTE INFERIOR -->
+  <div class="chemin-progression" id="progress-bar">
+    <div class="progress-container">
+      <div class="moving-line"></div>
+      <div class="points-container" id="points-container"></div>
+      <div id="character" class="character"></div>
+    </div>
+  </div>
+
+  <!-- Contenedor para las tarjetas de vídeo dinámicas -->
+  <div id="video-card-container"></div>
+
+  <!-- Inclusión del archivo JavaScript específico para la versión en español -->
+  <script src="../JS/indexes.js"></script>
+</body>
+</html>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accueil - La Maison des Livreurs</title>
+  <title>Home - The House of Couriers</title>
   <link rel="stylesheet" href="../CSS/accueil.css">
-  <script src="../JS/accueil.js" defer></script>
+  <!-- Inclusion du script externe pour la version anglaise -->
+  <script src="../JS/accueilen.js" defer></script>
   <style>
     /* Style général pour les images afin de préserver leur ratio */
     img {
@@ -13,7 +14,6 @@
       height: auto;
       display: block;
     }
-
     /* Container du menu déroulant de langue */
     .lang-dropdown {
       position: fixed;
@@ -21,7 +21,6 @@
       right: 10px;
       z-index: 1000;
     }
-
     /* Bouton affichant la langue courante */
     .lang-dropbtn {
       background: none;
@@ -29,7 +28,6 @@
       cursor: pointer;
       padding: 0;
     }
-
     /* Conteneur du contenu déroulant */
     .lang-dropdown-content {
       display: none;
@@ -42,7 +40,6 @@
       border-radius: 4px;
       overflow: hidden;
     }
-
     /* Liens à l'intérieur du menu déroulant */
     .lang-dropdown-content a {
       color: black;
@@ -53,16 +50,13 @@
       gap: 8px;
       transition: background-color 0.2s;
     }
-
     .lang-dropdown-content a:hover {
       background-color: #ddd;
     }
-
     /* Afficher le menu au survol du conteneur */
     .lang-dropdown:hover .lang-dropdown-content {
       display: block;
     }
-
     /* Ajustement des images des drapeaux */
     .lang-dropdown-content a img,
     .lang-dropbtn img {
@@ -75,16 +69,16 @@
 <body>
   <!-- Menu déroulant pour le sélecteur de langue -->
   <div class="lang-dropdown">
-    <!-- Bouton affichant la langue actuelle (ici Français par défaut) -->
-    <button class="lang-dropbtn" title="Choisir une langue">
-      <img src="../PICTURE/drapeaufr.png" alt="Français">
+    <!-- Bouton affichant la langue actuelle (ici English) -->
+    <button class="lang-dropbtn" title="Choose a language">
+      <img src="../PICTURE/drapeeauanglais.png" alt="English">
     </button>
     <!-- Contenu du menu déroulant -->
     <div class="lang-dropdown-content">
-      <a href="..//HTML/accueil.html" title="Français">
+      <a href="../HTML/accueil.html" title="Français">
         <img src="../PICTURE/drapeaufr.png" alt="Français"> Français
       </a>
-      <a href="..//HTML/accueilen.html" title="English">
+      <a href="../HTML/accueilen.html" title="English">
         <img src="../PICTURE/drapeeauanglais.png" alt="English"> English
       </a>
       <a href="../HTML/accueilesp.html" title="Español">
@@ -94,26 +88,26 @@
   </div>
 
   <div id="splash">
-    <img src="../PICTURE/mmilogo.png" alt="Logo MMI">
+    <img src="../PICTURE/mmilogo.png" alt="MMI Logo">
   </div>
   <div class="intro">
     <div class="intro-header">
       <div class="intro-title">
-        <h1>La Maison des Livreurs</h1>
+        <h1>The House of Couriers</h1>
       </div>
       <div class="intro-byline">
-        <p>Réalisé par MMI Bordeaux</p>
+        <p>Made by MMI Bordeaux</p>
       </div>
     </div>
     <div class="button-container">
-      <button class="intro-begin">Commencer</button>
-      <button class="credit">Crédit</button>
+      <button class="intro-begin">Start</button>
+      <button class="credit">Credits</button>
     </div>
   </div>
   <div class="transition-overlay">
     <div class="transition-message">
-      <p class="msg1">Afin de profiter pleinement de l'expérience, nous vous suggérons d'utiliser des écouteurs.</p>
-      <p class="msg2">Dans cette expérience, des zones discrètes se mettent en évidence au survol. Cliquez dessus pour visionner les vidéos.</p>
+      <p class="msg1">To fully enjoy the experience, we suggest you use headphones</p>
+      <p class="msg2">In this experiment, discrete areas are highlighted when hovering. Click on them to view the videos.</p>
     </div>
   </div>
 </body>
