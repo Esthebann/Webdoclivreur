@@ -37,7 +37,6 @@ function setLanguage(lang) {
         { video: "../PICTURE/MVI_0094.mp4", bottom: "2%", left: "14%", width: "200px", height: "225px" },
         { video: "../PICTURE/MVI_0094.mp4", top: "0%", right: "0%", width: "100px", height: "150px" },
         { video: "../PICTURE/MVI_0094.mp4", bottom: "3%", right: "0%", width: "300px", height: "250px" }
-        { video: "../PICTURE/MVI_0094.mp4", bottom: "3%", right: "0%", width: "300px", height: "250px" }
        
       ]
     },
