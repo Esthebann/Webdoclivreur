@@ -10,7 +10,7 @@ const characterScenes = [
 const pointsData = [
   {
     image: "../PICTURE/legal.png",
-    navButtonImage: "../PICTURE/maisonmdl.svg",
+    navButtonImage: "../PICTURE/vector 15.png",
     zones: [
       {
         video: "https://www.youtube.com/watch?v=9lHGPfybFIs",
