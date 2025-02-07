@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     overlay.style.left = "0";
     overlay.classList.add("active");
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = "HTML/index.html";
     }, 3000);
   });
   document.querySelector(".credit").addEventListener("click", function(event) {
