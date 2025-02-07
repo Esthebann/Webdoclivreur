@@ -72,7 +72,7 @@ aboutButton.addEventListener("click", () => {
 const videoButton = document.getElementById("videoButton");
 
 
-const myVideoUrl = "https://www.youtube.com/watch?v=_UE3Z0CGLsY";
+const myVideoUrl = "https://www.youtube.com/watch?v=p2CIyVs9ZA8";
 
 
 let overlayOpen = false;
@@ -113,7 +113,7 @@ function openVideoOverlay(videoSource) {
 
   videoCard.addEventListener("click", (e) => e.stopPropagation());
 
-  if (videoSource.includes("https://www.youtube.com/watch?v=_UE3Z0CGLsY")) {
+  if (videoSource.includes("https://www.youtube.com/watch?v=p2CIyVs9ZA8")) {
 
     const urlObj = new URL(videoSource);
     const videoId = urlObj.searchParams.get("v") || "";
