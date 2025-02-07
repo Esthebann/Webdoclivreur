@@ -1,14 +1,4 @@
-/********************************************************
- * FUNCIÓN: CAMBIAR IDIOMA
- ********************************************************/
-function setLanguage(lang) {
-  console.log("Idioma seleccionado: " + lang);
-  // En esta versión, la redirección se gestiona mediante el href del enlace en el menú.
-}
 
-/********************************************************
- * IMÁGENES DEL PERSONAJE
- ********************************************************/
 const baseCyclist = "../PICTURE/livreur.svg";
 const characterScenes = [
   "../PICTURE/cycliste_scene1.svg",
@@ -17,41 +7,155 @@ const characterScenes = [
   "../PICTURE/ambulance.svg"
 ];
 
-/********************************************************
- * DATOS DE LOS PUNTOS CON ZONAS CLICABLES Y BOTONES DE NAVEGACIÓN
- ********************************************************/
 const pointsData = [
   {
     image: "../PICTURE/legal.png",
-    navButtonImage: "../PICTURE/maisonmdl.svg",  // Botón "legal"
+    navButtonImage: "../PICTURE/maisonmdl.svg",
     zones: [
-      { video: "../PICTURE/MVI_0094.mp4", bottom: "2%", left: "0%", width: "300px", height: "170px" },
-      { video: "../PICTURE/MVI_0094.mp4", top: "0%", right: "0%", width: "280px", height: "250px" },
-      { video: "../PICTURE/MVI_0094.mp4", bottom: "0%", right: "12%", width: "150px", height: "150px" }
+      {
+        video: "https://www.youtube.com/watch?v=9lHGPfybFIs",
+        bottom: "2%",
+        left: "0%",
+        width: "300px",
+        height: "170px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=xzJpLcK6psc",
+        top: "0%",
+        right: "0%",
+        width: "280px",
+        height: "250px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=Xuzmdb6QGw0",
+        bottom: "0%",
+        right: "12%",
+        width: "150px",
+        height: "150px"
+      }
     ]
   },
   {
-    image: "../PICTURE/newfond.png",
-    navButtonImage: "../PICTURE/maisonmdl.svg",  // Botón "Asistencia"
+    image: "../PICTURE/aide.png",
+    navButtonImage: "../PICTURE/maisonmdl.svg",
     zones: [
-      { video: "../PICTURE/MVI_0094.mp4", top: "20%", left: "10%", width: "100px", height: "100px" },
-      { video: "../PICTURE/MVI_0094.mp4", top: "20%", right: "10%", width: "100px", height: "100px" },
-      { video: "../PICTURE/MVI_0096.mp4", bottom: "20%", left: "50%", transform: "translateX(-50%)", width: "100px", height: "100px" }
+      {
+        video: "https://www.youtube.com/watch?v=LSFYzCnHX1M&feature=youtu.be",
+        bottom: "2%",
+        left: "14%",
+        width: "200px",
+        height: "225px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=lhaMUTpItyk&feature=youtu.be",
+        bottom: "20%",
+        left: "0%",
+        width: "100px",
+        height: "220px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=D4JuUVveek4",
+        top: "0%",
+        right: "0%",
+        width: "100px",
+        height: "150px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=LPKfYXiNRLc",
+        top: "15%",
+        right: "45%",
+        width: "170px",
+        height: "140px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=e12oBJ2_-W8&feature=youtu.be",
+        bottom: "3%",
+        right: "40%",
+        width: "150px",
+        height: "100px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=CKnO2_djKe0",
+        bottom: "3%",
+        right: "0%",
+        width: "300px",
+        height: "250px"
+      }
     ]
   },
   {
     image: "../PICTURE/accidentsfond.png",
-    navButtonImage: "../PICTURE/accidentbouton.svg",  // Botón "Accidentes"
+    navButtonImage: "../PICTURE/accidentbouton.svg",
     zones: [
-      { video: "../PICTURE/MVI_0094.mp4", top: "40%", left: "30%", width: "120px", height: "120px" },
-      { video: "../PICTURE/MVI_0093.mp4", top: "40%", right: "30%", width: "120px", height: "120px" }
+      {
+        video: "https://www.youtube.com/watch?v=X_C5EZwJDEk&feature=youtu.be",
+        top: "65%",
+        left: "12%",
+        width: "160px",
+        height: "120px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=kxkHdOggqK8&feature=youtu.be",
+        bottom: "2%",
+        right: "0%",
+        width: "450px",
+        height: "140px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=O0U3vHW_lN0&feature=youtu.be",
+        top: "35%",
+        right: "12%",
+        width: "250px",
+        height: "140px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=arfNXHD2_Rs",
+        top: "0%",
+        right: "12%",
+        width: "500px",
+        height: "140px"
+      }
     ]
   },
   {
-    image: "../PICTURE/newfond.png",
-    navButtonImage: "../PICTURE/hopital.svg",  // Botón "Salud"
+    image: "../PICTURE/conditions.png",
+    navButtonImage: "../PICTURE/hopital.svg",
     zones: [
-      { video: "MVI_0103.mp4", top: "50%", left: "45%", width: "100px", height: "100px" }
+      {
+        video: "https://www.youtube.com/watch?v=Z-HIRJzhmVw&feature=youtu.be",
+        top: "20%",
+        left: "25%",
+        width: "100px",
+        height: "90px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=2BqsA5o5YS0&feature=youtu.be",
+        top: "25%",
+        left: "3%",
+        width: "120px",
+        height: "330px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=7A65wkCmaHQ&feature=youtu.be",
+        bottom: "2%",
+        right: "25%",
+        width: "200px",
+        height: "140px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=rW-PsJU9ZLs&feature=youtu.be",
+        top: "35%",
+        right: "10%",
+        width: "150px",
+        height: "140px"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=cwKfV9DyiMg&feature=youtu.be",
+        top: "10%",
+        right: "16%",
+        width: "100px",
+        height: "80px"
+      }
     ]
   }
 ];
@@ -59,24 +163,18 @@ const pointsData = [
 let currentPointIndex = 0;
 let watchedCount = 0;
 
-/********************************************************
- * FUNCIÓN: CARGAR LA BARRA DE PROGRESO
- ********************************************************/
 function loadProgressBar() {
   const pointsContainer = document.getElementById("points-container");
+  if (!pointsContainer) return;
   pointsContainer.innerHTML = "";
 
   pointsData.forEach((pt, index) => {
-    // Crear un contenedor para el botón y la etiqueta
     const pointWrapper = document.createElement("div");
     pointWrapper.className = "point-wrapper";
-
-    // Para el punto "condiciones laborales" (índice 3), aumentar el ancho del contenedor
     if (index === 3) {
-      pointWrapper.style.width = "200px"; // Ajusta este valor si es necesario
+      pointWrapper.style.width = "200px";
     }
 
-    // Crear el botón
     const btn = document.createElement("button");
     btn.dataset.pointIndex = index;
     if (index === currentPointIndex) {
@@ -89,15 +187,14 @@ function loadProgressBar() {
       btn.appendChild(img);
     }
     pointWrapper.appendChild(btn);
-
-    // Crear la etiqueta
+    
     const label = document.createElement("span");
-    if (index === 0) label.textContent = "legal";
-    else if (index === 1) label.textContent = "Asistencia";
-    else if (index === 2) label.textContent = "accidentes";
+    if (index === 0) label.textContent = "Legal";
+    else if (index === 1) label.textContent = "Ayuda";
+    else if (index === 2) label.textContent = "Accidentes";
     else if (index === 3) {
-      label.textContent = "condiciones trabajo";
-      label.style.whiteSpace = "nowrap"; // Evita el salto de línea
+      label.textContent = "Condiciones de trabajo";
+      label.style.whiteSpace = "nowrap";
     }
     pointWrapper.appendChild(label);
 
@@ -106,7 +203,9 @@ function loadProgressBar() {
     btn.addEventListener("click", () => {
       currentPointIndex = index;
       document.getElementById("character").style.backgroundImage =
-        currentPointIndex === 3 ? "url('../PICTURE/ambulance.svg')" : "url('" + baseCyclist + "')";
+        currentPointIndex === 3
+          ? "url('../PICTURE/ambulance.svg')"
+          : "url('" + baseCyclist + "')";
       loadPoint(currentPointIndex);
       updateProgressBar();
     });
@@ -114,15 +213,15 @@ function loadProgressBar() {
   updateCharacterPosition();
 }
 
-/********************************************************
- * FUNCIÓN: ACTUALIZAR BARRA DE PROGRESO Y POSICIÓN DEL PERSONAJE
- ********************************************************/
 function updateProgressBar() {
   const pointsContainer = document.getElementById("points-container");
   if (!pointsContainer) return;
-  // Remover la clase activa de todos los botones
-  pointsContainer.querySelectorAll("button").forEach(btn => btn.classList.remove("point-actif"));
-  const activeBtn = pointsContainer.querySelector(`button[data-point-index="${currentPointIndex}"]`);
+  pointsContainer.querySelectorAll("button").forEach(btn => {
+    btn.classList.remove("point-actif");
+  });
+  const activeBtn = pointsContainer.querySelector(
+    `button[data-point-index="${currentPointIndex}"]`
+  );
   if (activeBtn) {
     activeBtn.classList.add("point-actif");
   }
@@ -133,9 +232,13 @@ function updateCharacterPosition() {
   const pointsContainer = document.getElementById("points-container");
   const character = document.getElementById("character");
   if (!pointsContainer || !character) return;
-  const activeBtn = pointsContainer.querySelector(`button[data-point-index="${currentPointIndex}"]`);
+  const activeBtn = pointsContainer.querySelector(
+    `button[data-point-index="${currentPointIndex}"]`
+  );
   character.style.backgroundImage =
-    currentPointIndex === 3 ? "url('../PICTURE/ambulance.svg')" : "url('" + baseCyclist + "')";
+    currentPointIndex === 3
+      ? "url('../PICTURE/ambulance.svg')"
+      : "url('" + baseCyclist + "')";
   if (activeBtn) {
     const containerRect = pointsContainer.getBoundingClientRect();
     const btnRect = activeBtn.getBoundingClientRect();
@@ -148,118 +251,148 @@ document.getElementById("character").addEventListener("transitionend", function(
   this.style.backgroundImage = `url('${characterScenes[currentPointIndex]}')`;
 });
 
-/********************************************************
- * FUNCIÓN: CARGAR PUNTO
- ********************************************************/
 function loadPoint(index) {
   currentPointIndex = index;
   watchedCount = 0;
+
   const pointData = pointsData[index];
   const container = document.getElementById("image-container");
-  container.innerHTML = "";
+  if (!container) return;
 
-  // Insertar la imagen de fondo del punto
+  container.innerHTML = "";
   const img = document.createElement("img");
   img.className = "bg-image";
   img.src = pointData.image;
   container.appendChild(img);
 
-  // Crear zonas clicables
   pointData.zones.forEach((zoneData, i) => {
     const zone = document.createElement("div");
     zone.className = "clickable-zone";
-
-    // Establecer dimensiones predeterminadas o las definidas
     zone.style.width = zoneData.width || "100px";
     zone.style.height = zoneData.height || "100px";
-
-    // Posicionamiento si está definido
     if (zoneData.top) zone.style.top = zoneData.top;
     if (zoneData.left) zone.style.left = zoneData.left;
     if (zoneData.right) zone.style.right = zoneData.right;
     if (zoneData.bottom) zone.style.bottom = zoneData.bottom;
-    if (zoneData.transform) zone.style.transform = zoneData.transform;
 
     zone.dataset.zoneIndex = i;
     zone.dataset.watched = "false";
-    zone.addEventListener("click", function(){
-      if(zone.dataset.watched === "true") return;
+    zone.addEventListener("click", function() {
+      if (zone.dataset.watched === "true") return;
       playVideoForZone(i);
     });
     container.appendChild(zone);
   });
+
   updateProgressBar();
 }
 
-/********************************************************
- * FUNCIÓN: REPRODUCIR VÍDEO PARA UNA ZONA
- ********************************************************/
 function playVideoForZone(zoneIndex) {
-  const videoSource = pointsData[currentPointIndex].zones[zoneIndex].video;
+  const zoneInfo = pointsData[currentPointIndex].zones[zoneIndex];
+  const videoSource = zoneInfo.video;
   const overlay = document.createElement("div");
   overlay.className = "video-overlay";
-
   const videoCard = document.createElement("div");
   videoCard.className = "video-card";
-  videoCard.addEventListener("click", (e) => e.stopPropagation());
+  videoCard.addEventListener("click", e => e.stopPropagation());
 
-  const video = document.createElement("video");
-  video.setAttribute("playsinline", "");
-  video.setAttribute("controls", "");
-  const source = document.createElement("source");
-  source.src = videoSource;
-  source.type = "video/mp4";
-  video.appendChild(source);
-
-  videoCard.appendChild(video);
   overlay.appendChild(videoCard);
   document.body.appendChild(overlay);
+  if (videoSource.includes("youtube.com/watch")) {
+    const playerContainer = document.createElement("div");
+    const uniquePlayerId = "player-" + Date.now();
+    playerContainer.id = uniquePlayerId;
+    videoCard.appendChild(playerContainer);
+    const urlObj = new URL(videoSource);
+    const videoId = urlObj.searchParams.get("v") || "";
+    const widthVal = zoneInfo.width
+      ? zoneInfo.width.replace("px", "")
+      : "560";
+    const heightVal = zoneInfo.height
+      ? zoneInfo.height.replace("px", "")
+      : "315";
+    const player = new YT.Player(uniquePlayerId, {
+      width: widthVal,
+      height: heightVal,
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1
+      },
+      events: {
+        onStateChange: function(event) {
+          if (event.data === YT.PlayerState.ENDED) {
+            closeOverlay(overlay, videoCard);
+            markZoneAsWatched(zoneIndex);
+          }
+        }
+      }
+    });
+  } else {
+    const video = document.createElement("video");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("controls", "");
 
-  setTimeout(() => {
-    videoCard.classList.add("show");
-  }, 100);
+    const source = document.createElement("source");
+    source.src = videoSource;
+    source.type = "video/mp4";
+    video.appendChild(source);
 
-  video.addEventListener("loadedmetadata", function(){
-    video.currentTime = 10;
-  }, { once: true });
+    videoCard.appendChild(video);
+    video.play();
 
-  video.play();
+    video.addEventListener("ended", () => {
+      closeOverlay(overlay, videoCard);
+      markZoneAsWatched(zoneIndex);
+    });
+  }
+  videoCard.classList.add("show");
 
   overlay.addEventListener("click", function() {
-    videoCard.classList.remove("show");
-    setTimeout(() => overlay.remove(), 500);
-  });
-
-  video.addEventListener("ended", function(){
-    videoCard.classList.remove("show");
-    setTimeout(() => overlay.remove(), 500);
-
-    const container = document.getElementById("image-container");
-    const zones = container.querySelectorAll(".clickable-zone");
-    zones[zoneIndex].dataset.watched = "true";
-    watchedCount++;
-    if(watchedCount >= pointsData[currentPointIndex].zones.length) {
-      setTimeout(() => { nextPoint(); }, 1000);
-    }
+    closeOverlay(overlay, videoCard);
   });
 }
 
-/********************************************************
- * FUNCIÓN: PASAR AL SIGUIENTE PUNTO
- ********************************************************/
-function nextPoint() {
-  if(currentPointIndex < pointsData.length - 1) {
-    loadPoint(currentPointIndex + 1);
-    updateProgressBar();
-  } else {
-    console.log("Todos los puntos han finalizado.");
+function closeOverlay(overlay, videoCard) {
+  videoCard.classList.remove("show");
+  setTimeout(() => {
+    overlay.remove();
+  }, 300);
+}
+
+function markZoneAsWatched(zoneIndex) {
+  const container = document.getElementById("image-container");
+  if (!container) return;
+
+  const zones = container.querySelectorAll(".clickable-zone");
+  if (!zones[zoneIndex]) return;
+
+  zones[zoneIndex].dataset.watched = "true";
+  watchedCount++;
+
+  if (watchedCount >= pointsData[currentPointIndex].zones.length) {
+    setTimeout(() => {
+      nextPoint();
+    }, 1000);
   }
 }
 
-/********************************************************
- * INICIALIZACIÓN
- ********************************************************/
-document.addEventListener("DOMContentLoaded", function(){
+function nextPoint() {
+  if (currentPointIndex < pointsData.length - 1) {
+    loadPoint(currentPointIndex + 1);
+    updateProgressBar();
+  } else {
+    console.log("Todos los puntos han sido completados. Redirigiendo en 2 segundos...");
+    setTimeout(() => {
+      window.location.href = "../HTML/creditses.html";
+    }, 2000);
+  }
+}
+
+function onYouTubeIframeAPIReady() {
+  console.log("La API de YouTube Iframe está lista.");
+}
+
+document.addEventListener("DOMContentLoaded", function() {
   loadProgressBar();
   loadPoint(0);
 });

@@ -15,8 +15,8 @@ aboutButton.addEventListener("click", function () {
                 Gabriel bisson-barret <br>
                 Kilian Beney<br>
                 Brice Bréart<br>
-                Música: Showtime<br>
-                Dirección artística: Nadie<br>
+                Noah Laborde<br>
+                Esthebann Volle<br>
               </p>
             `;
 
@@ -38,7 +38,7 @@ aboutButton.addEventListener("click", function () {
             creditsSection.innerHTML = `
               <h3>Un gran agradecimiento a:</h3>
               <p class="remerciement">
-                Sin su apoyo, colaboración y confianza, este reportaje nunca habría visto la luz. Su compromiso apasionado permitió capturar momentos auténticos e inolvidables, y estamos profundamente agradecidos.
+                Sin su apoyo, colaboración y confianza, este reportaje nunca habría visto la luz. Su compromiso apasionado permitió capturar momentos auténticos e inolvidables y estamos profundamente agradecidos.
               </p>
             `;
 

@@ -21,6 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector(".credit").addEventListener("click", function(event) {
     event.preventDefault();
     sessionStorage.setItem('internalNav', 'true');
-    window.location.href = "credit.html";
+    window.location.href = "credits.html";
   });
 });

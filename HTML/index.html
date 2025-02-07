@@ -4,15 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zoom image de fond sans passer sur la nav ni la route</title>
-  <!-- Lien vers le fichier CSS externe -->
-  <link rel="stylesheet" href="..//CSS/index.css">
+  <link rel="stylesheet" href="../CSS/index.css">
 </head>
 <body>
-  <!-- NAV (50px) -->
   <nav>
     <a href="accueil.html">Accueil</a>
     <a href="#">Vidéos</a>
-    <!-- Menu déroulant pour la langue -->
     <div class="dropdown">
       <a class="dropbtn">Langue</a>
       <div class="dropdown-content">
@@ -23,20 +20,13 @@
     </div>
     <a href="credits.html">Crédits</a>
   </nav>
-
-  <!-- Image de fond floutée -->
   <div class="background-image">
     <img src="../PICTURE/accidentsfond.png" alt="Fonds">
   </div>
-
-  <!-- CONTENU PRINCIPAL -->
   <div class="main-content">
     <div class="image-container" id="image-container">
-      <!-- L'image de fond et les zones cliquables seront insérées dynamiquement -->
     </div>
   </div>
-
-  <!-- ROUTE ANIMÉE (80px) -->
   <div class="chemin-progression" id="progress-bar">
     <div class="progress-container">
       <div class="moving-line"></div>
@@ -44,11 +34,8 @@
       <div id="character" class="character"></div>
     </div>
   </div>
-
-  <!-- Container pour les vidéo-cards dynamiques -->
   <div id="video-card-container"></div>
-
-  <!-- Inclusion du fichier JavaScript externe -->
-  <script src="..//JS/index.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="../JS/index.js"></script>
 </body>
 </html>

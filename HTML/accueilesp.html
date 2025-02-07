@@ -5,30 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio - La Casa de los Repartidores</title>
   <link rel="stylesheet" href="../CSS/accueil.css">
-  <!-- Inclusion du script externe pour la version espagnole -->
   <script src="../JS/accueilesp.js" defer></script>
   <style>
-    /* Style général pour les images afin de préserver leur ratio */
     img {
       max-width: 100%;
       height: auto;
       display: block;
     }
-    /* Container du menu déroulant de langue */
     .lang-dropdown {
       position: fixed;
       top: 10px;
       right: 10px;
       z-index: 1000;
     }
-    /* Bouton affichant la langue courante */
     .lang-dropbtn {
       background: none;
       border: none;
       cursor: pointer;
       padding: 0;
     }
-    /* Conteneur du contenu déroulant */
     .lang-dropdown-content {
       display: none;
       position: absolute;
@@ -40,7 +35,6 @@
       border-radius: 4px;
       overflow: hidden;
     }
-    /* Liens à l'intérieur du menu déroulant */
     .lang-dropdown-content a {
       color: black;
       padding: 8px 12px;
@@ -53,11 +47,9 @@
     .lang-dropdown-content a:hover {
       background-color: #ddd;
     }
-    /* Afficher le menu au survol du conteneur */
     .lang-dropdown:hover .lang-dropdown-content {
       display: block;
     }
-    /* Ajustement des images des drapeaux */
     .lang-dropdown-content a img,
     .lang-dropbtn img {
       width: 24px;
@@ -67,13 +59,10 @@
   </style>
 </head>
 <body>
-  <!-- Menu déroulant pour le sélecteur de langue -->
   <div class="lang-dropdown">
-    <!-- Bouton affichant la langue actuelle (ici Español) -->
     <button class="lang-dropbtn" title="Elegir idioma">
       <img src="../PICTURE/drapeauespagnol.png" alt="Español">
     </button>
-    <!-- Contenu du menu déroulant -->
     <div class="lang-dropdown-content">
       <a href="../HTML/accueil.html" title="Français">
         <img src="../PICTURE/drapeaufr.png" alt="Français"> Français
@@ -93,7 +82,7 @@
   <div class="intro">
     <div class="intro-header">
       <div class="intro-title">
-        <h1>La Casa de los Repartidores</h1>
+        <h1>La Maison des Livreurs</h1>
       </div>
       <div class="intro-byline">
         <p>Realizado por MMI Bordeaux</p>
@@ -106,8 +95,8 @@
   </div>
   <div class="transition-overlay">
     <div class="transition-message">
-      <p class="msg1">Para disfrutar de la experiencia al máximo, te recomendamos que uses auriculares.</p>
-      <p class="msg2">En esta experiencia, zonas discretas se destacan al pasar el ratón. Haga clic sobre ellas para ver los vídeos.</p>
+      <p class="msg1">Para esta experiencia, se recomiendan auriculares</p>
+      <p class="msg2">En esta experiencia debes hacer clic en ciertas zonas para ver videos</p>
     </div>
   </div>
 </body>
